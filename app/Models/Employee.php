@@ -32,6 +32,6 @@ class Employee extends Model
         'zip_code',
         'bank_account',
         'account_number',
-        $table->softDeletesTz('deleted_at')->nullable(),
+        'deleted_at',
     ];
 }
