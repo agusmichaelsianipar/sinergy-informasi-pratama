@@ -96,6 +96,12 @@ class EmployeeController extends Controller
                 "status" => true,
                 "message" => "Employee data successfully updated."
             ], 200);
+        } catch (ModelNotFoundException $ex) {
+            
+            return response()->json([
+                'status' => false,
+                'error' => $ex->getModel()." not found!"
+            ], 404);
         }catch(\Throwable $th){
             
             return response()->json([
