@@ -8,16 +8,25 @@
                 <p class="h5">Employee Managements</p>
             </div>
             <div class="card-body">
+                {{-- Add Employee Button --}}
+                <button type="button" class="btn btn-sm btn-outline-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#createEmployeeModal">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Employee
+                </button>
+
                 {{-- Employee Table --}}
                 @include('employee.components.table')
             </div>
         </div>
     </div>
 
+    @include('employee.components.createEmployeeModal')
 @endsection
 
 
 @push('addon-script')
+    <script type="text/javascript" src="{{ asset('assets/js/createEmployee.js') }}"></script>
     <script>
         $.ajaxSetup({
             headers: {
