@@ -34,4 +34,23 @@ class Employee extends Model
         'account_number',
         'deleted_at',
     ];
+
+    const POSITION = [
+        "president" => "President",
+        "director" => "Director",
+        "manager" => "Manager",
+        "supervisor" => "Supervisor",
+        "staff" => "Staff",
+    ];
+    const BANK_ACCOUNT = [
+        "bni" => "Bank BNI",
+        "bca" => "Bank BCA",
+        "bri" => "Bank BRI",
+        "mandiri" => "Bank Mandiri",
+        "cimb" => "Bank CIMB Niaga",
+    ];
+
+    public static function next(){
+        return static::max('id') + 1;
+    }
 }
