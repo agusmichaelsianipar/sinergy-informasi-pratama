@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('province_name', 250);
             $table->string('zip_code', 10);
             $table->string('bank_account', 100);
-            $table->string('account_number', 20);
+            $table->string('account_number', 30);
             $table->softDeletesTz('deleted_at')->nullable();
             $table->timestampsTz();
         });
