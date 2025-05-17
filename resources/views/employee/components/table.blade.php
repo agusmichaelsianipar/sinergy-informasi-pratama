@@ -1,38 +1,51 @@
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Employee ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date of Birth</th>
+                <th>Name</th>
+                <th>Birth</th>
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Province</th>
                 <th>City</th>
+                <th>Street</th>
                 <th>Zip</th>
                 <th>KTP</th>
                 <th>Position</th>
                 <th>Bank Account</th>
-                <th>Account No</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($employees as $employee)
                 <tr>
                     <td>{{ $employee->employee_id_number }}</td>
-                    <td>{{ $employee->user->firstname }}</td>
-                    <td>{{ $employee->user->lastname }}</td>
-                    <td>{{ $employee->date_of_birth }}</td>
+                    <td>{{ $employee->user->firstname }} {{ $employee->user->lastname }}</td>
+                    <td>
+                        {{ $employee->date_of_birth ? Carbon\Carbon::parse($employee->date_of_birth)->format('d/m/Y') : '' }}
+                    </td>
                     <td>{{ $employee->phone }}</td>
                     <td>{{ $employee->user->email }}</td>
                     <td>{{ $employee->province_name }}</td>
                     <td>{{ $employee->city_name }}</td>
+                    <td>{{ $employee->street }}</td>
                     <td>{{ $employee->zip_code }}</td>
-                    <td>{{ $employee->citizenship_id_no }}</td>
+                    <td class="text-center">
+                        <a href="javascript:void(0)"
+                            data-citizenship_id_file="{{ url('/storage/' . $employee->citizenship_id_file) }}"
+                            data-bs-toggle="modal" data-bs-target="#showImageModal">
+                            See File
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <br>
+                        {{ $employee->citizenship_id_no }}
+                    </td>
                     <td>{{ $employee->position }}</td>
-                    <td>{{ $employee->bank_account }}</td>
-                    <td>{{ $employee->account_number }}</td>
+                    <td class="text-center">
+                        {{ $employee->bank_account }}
+                        <br>
+                        {{ $employee->account_number }}
+                    </td>
                 </tr>
             @endforeach
         </tbody>

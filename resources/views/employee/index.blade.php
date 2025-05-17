@@ -21,11 +21,13 @@
         </div>
     </div>
 
+    @include('employee.components.showImageModal')
     @include('employee.components.createEmployeeModal')
 @endsection
 
 
 @push('addon-script')
+    <script type="text/javascript" src="{{ asset('assets/js/showEmployee.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/createEmployee.js') }}"></script>
     <script>
         $.ajaxSetup({
