@@ -25,8 +25,8 @@ class EmployeeService extends Emsifa
 
 
         if ($request->file('citizenship_id_file')) {
-    
-            $employe_id_number = Carbon::parse($request->date_of_birth)->isoFormat("YYYYMMDD").Carbon::now()->isoFormat("YYYYMM").$request->gender == "male" ? '1' : '2'.str_pad(Employee::next(), 5, "0", STR_PAD_LEFT);
+            $genderVal = $request->gender == "male" ? '1' : '2';
+            $employe_id_number = Carbon::parse($request->date_of_birth)->format("Ymd").Carbon::now()->isoFormat("Ym").$genderVal.str_pad(Employee::next(), 5, "0", STR_PAD_LEFT);
 
             $province = $this->getProvinceByID($request->province);
             $city = $this->getCityByCityID($request->city);
@@ -76,7 +76,8 @@ class EmployeeService extends Emsifa
         
         $user = $this->userRepos->getUserByUserID($employee->user_id);
 
-        $employe_id_number = Carbon::parse($request->date_of_birth)->isoFormat("YYYYMMDD").Carbon::now()->isoFormat("YYYYMM").$request->gender == "male" ? '1' : '2'.str_pad(Employee::next(), 5, "0", STR_PAD_LEFT);
+        $genderVal = $request->gender == "male" ? '1' : '2';
+        $employe_id_number = Carbon::parse($request->date_of_birth)->format("Ymd").Carbon::now()->isoFormat("Ym").$genderVal.str_pad(Employee::next(), 5, "0", STR_PAD_LEFT);
         $identityFilename = $employee->citizenship_id_file;
         if ($request->file('citizenship_id_file')) {
 
