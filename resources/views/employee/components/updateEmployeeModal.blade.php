@@ -114,7 +114,6 @@
                     <div class="mb-3">
                         <label class="fw-semibold" for="updateEmployeeStreet">
                             Street
-                            <span class="text-danger">*</span>
                         </label>
                         <textarea name="street" id="updateEmployeeStreet" class="form-control" cols="10"
                             rows="3"></textarea>
@@ -125,7 +124,6 @@
                             <div class="mb-3">
                                 <label class="fw-semibold" for="updateEmployeeProvince">
                                     Province
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <select name="province" id="updateEmployeeProvince" class="form-control">
                                     <option value="">Select Province</option>
@@ -137,7 +135,6 @@
                             <div class="mb-3">
                                 <label class="fw-semibold" for="updateEmployeeCity">
                                     City
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <select name="city" id="updateEmployeeCity" class="form-control">
                                     <option value="">Select City</option>
@@ -148,7 +145,6 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label class="fw-semibold" for="updateEmployeeZipCode">Zip Code
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="zip_code" id="updateEmployeeZipCode" class="form-control"
                                     data-type="number">
@@ -161,7 +157,6 @@
                     <div class="mb-3">
                         <label class="fw-semibold" for="updateEmployeePosition">
                             Position
-                            <span class="text-danger">*</span>
                         </label>
                         <select name="position" id="updateEmployeePosition" class="form-control">
                             <option value="">Select Position</option>
@@ -176,7 +171,6 @@
                             <div class="mb-3">
                                 <label class="fw-semibold" for="updateEmployeeBankAccount">
                                     Bank Account
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <select name="bank_account" id="updateEmployeeBankAccount" class="form-control">
                                     <option value="">Select Bank Account</option>
@@ -191,7 +185,6 @@
                             <div class="mb-3">
                                 <label class="fw-semibold" for="updateEmployeeBankAccountNo">
                                     Bank Account No
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="account_number" id="updateEmployeeBankAccountNo"
                                     class="form-control" data-type="number">
