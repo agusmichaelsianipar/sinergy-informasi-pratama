@@ -203,7 +203,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary my-3 float-end">
                         <i class="fa-solid fa-floppy-disk"></i>
-                        Save
+                        Update
                     </button>
                 </form>
             </div>

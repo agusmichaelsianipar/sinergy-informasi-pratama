@@ -31,7 +31,7 @@ class StoreEmployeeRequest extends FormRequest
             'citizenship_id_file' => 'required|image|mimes:png,jpg|max:2048',
             'date_of_birth' => 'required|date',
             'gender' => ['required', 'string', Rule::in(['male', 'female'])],
-            'phone' => 'required|string|min:10|max:13',
+            'phone' => 'required|string|min:10|max:16',
             'position' => ['required', 'string', Rule::in(Employee::POSITION)],
             'province' => 'required|numeric',
             'city' => 'required|numeric',

@@ -102,9 +102,9 @@
                                 </label>
                                 <img class="img-thumbnail" id="createEmployeeCitizenshipIDFilePreview" src="#"
                                     style="display: none; max-height: 150px; min-height:120px; margin: auto;">
-                                <input type="file" name="citizenship_id_file" max="2048 Kilobytes"
-                                    id="createEmployeeCitizenshipIDFile" onchange="previewCitizenshipIDFile()"
-                                    accept="image/png, image/jpg, image/jpeg" class="form-control" required>
+                                <input type="file" name="citizenship_id_file" id="createEmployeeCitizenshipIDFile"
+                                    onchange="previewCitizenshipIDFile()" accept="image/png, image/jpg, image/jpeg"
+                                    class="form-control" required>
                                 <div id="createEmployeeCitizenshipIDFileErr" class="invalid-feedback"></div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary my-3 float-end">
+                    <button type="submit" id="createEmployeeSubmitButton" class="btn btn-primary my-3 float-end">
                         <i class="fa-solid fa-floppy-disk"></i>
                         Save
                     </button>

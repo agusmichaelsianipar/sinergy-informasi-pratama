@@ -42,9 +42,9 @@
                                 </a>
                             </li>
                             <li class="list-inline-item" title="Delete Employee Data" style="line-height: 1;">
-                                <a href="javascript:void(0)" data-url="/employees/{{ $employee->employee_id_number }}"
-                                    class="text-danger text-decoration-none mx-1" data-bs-toggle="modal"
-                                    data-bs-target="#destroyEmployeeModal" style="font-size: 0.90rem;">
+                                <a href="#" data-url="/employees/{{ $employee->employee_id_number }}"
+                                    onclick="showDeleteAlert(`/employees/{{ $employee->employee_id_number }}`)"
+                                    class="text-danger text-decoration-none mx-1" style="font-size: 0.90rem;">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </li>

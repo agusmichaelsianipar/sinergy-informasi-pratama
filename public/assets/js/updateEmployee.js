@@ -65,6 +65,7 @@ $("#updateEmployeeModal")
         modal.find("#updateEmployeeBankAccountNo").val(account_number);
     })
     .on("hidden.bs.modal", function () {
+        const modal = $("#updateEmployeeModal");
         modal.find("form#updateEmployeeForm").attr("action", "");
         modal.find("#updateEmployeeID").val("");
         modal.find("#updateEmployeeFirstname").val("");
@@ -88,6 +89,68 @@ $("#updateEmployeeModal")
         modal.find("#updateEmployeePosition").val("");
         modal.find("#updateEmployeeBankAccount").val("");
         modal.find("#updateEmployeeBankAccountNo").val("");
+
+        modal
+            .find("input[name='firstname']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='lastname']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("select[name='gender']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='date_of_birth']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='email']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='phone']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='citizenship_id_no']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='citizenship_id_file']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("textarea[name='street']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("select[name='province']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("select[name='city']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("input[name='zip_code']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("select[name='position']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+        modal
+            .find("select[name='bank_account']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
+
+        modal
+            .find("input[name='account_number']")
+            .removeClass("is-invalid")
+            .removeClass("is-valid");
     });
 
 function fetchCityByProvince(province, selectedCity = null) {
@@ -190,7 +253,9 @@ $("#updateEmployeeForm").validate({
         },
     },
     submitHandler: function (form) {
-        $("#createTujuanMemoPenagihanSubmitButton").prop("disabled", true);
+        $("#preloder").fadeIn();
+
+        $("#updateEmployeeSubmitButton").prop("disabled", true);
 
         let formData = new FormData(form);
 
@@ -201,25 +266,53 @@ $("#updateEmployeeForm").validate({
             contentType: false,
             processData: false,
             success: function (response) {
+                $("#updateEmployeeSubmitButton").prop("disabled", false);
+
                 $("#createTujuanMemoPenagihanNamaTujuanMemo").val("");
 
                 $("#createTujuanMemoPenagihanEmailTujuanMemo").val("");
 
                 $("#createTujuanMemoPenagihanGroup").val("");
 
-                $("#createTujuanMemoPenagihanModal").modal("hide");
+                $("#updateEmployeeModal").modal("hide");
 
-                // $(".toast-content-success").text(response.message);
-                // $("#liveToastSuccess").toast("show");
+                $("#preloder").fadeOut("normal", function () {
+                    $(this).hide();
+                });
 
-                // $("#tujuanMemoPenagihanTable").DataTable().ajax.reload();
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    title: response.message,
+                    position: "bottom-end",
+                    showConfirmButton: false,
+                    timer: 5000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
             },
             error: function (error) {
+                $("#createEmployeeSubmitButton").prop("disabled", false);
+                $("#preloder").fadeOut("normal", function () {
+                    $(this).hide();
+                });
                 if (error.status == 422) {
-                    // $(".toast-content-error").text(
-                    //     "Mohon mengisi semua kolom!"
-                    // );
-                    // $("#liveToastError").toast("show");
+                    Swal.fire({
+                        toast: true,
+                        icon: "error",
+                        title: "Data invalid!",
+                        position: "bottom-end",
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        },
+                    });
 
                     let err = error.responseJSON.errors;
                     if (typeof err.firstname !== "undefined") {
@@ -538,13 +631,20 @@ $("#updateEmployeeForm").validate({
                             .addClass("is-valid");
                     }
                 } else {
-                    // $(".toast-content-error").text(error.responseJSON.message);
-                    // $("#liveToastError").toast("show");
+                    Swal.fire({
+                        toast: true,
+                        icon: "error",
+                        title: error.responseJSON.error,
+                        position: "bottom-end",
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        },
+                    });
                 }
-                // $("#preloder").fadeOut("normal", function () {
-                //     $(this).hide();
-                // });
-                // $("#tujuanMemoPenagihanTable").DataTable().ajax.reload();
             },
         });
     },

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Services\EmployeeService;
@@ -98,10 +99,11 @@ class EmployeeController extends Controller
                 "message" => "Employee data successfully updated."
             ], 200);
         } catch (ModelNotFoundException $ex) {
-            
+            $modelWithoutBackslash = str_replace('\\', '|', $ex->getModel());
+            $model = explode('|', $modelWithoutBackslash);
             return response()->json([
                 'status' => false,
-                'error' => $ex->getModel()." not found!"
+                'error' => $model[count($model)-1]." not found!"
             ], 404);
         }catch(\Throwable $th){
             
@@ -128,10 +130,11 @@ class EmployeeController extends Controller
                 "message" => "Employee data successfully deleted."
             ], 200);
         } catch (ModelNotFoundException $ex) {
-            
+            $modelWithoutBackslash = str_replace('\\', '|', $ex->getModel());
+            $model = explode('|', $modelWithoutBackslash);
             return response()->json([
                 'status' => false,
-                'error' => $ex->getModel()." not found!"
+                'error' => $model[count($model)-1]." not found!"
             ], 404);
         }catch(\Throwable $th){
             
