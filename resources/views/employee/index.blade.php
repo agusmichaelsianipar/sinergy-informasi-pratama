@@ -28,6 +28,7 @@
 
 
 @push('addon-script')
+    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/showEmployee.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/createEmployee.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/updateEmployee.js') }}"></script>

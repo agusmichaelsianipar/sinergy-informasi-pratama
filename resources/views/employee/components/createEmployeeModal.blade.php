@@ -89,7 +89,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="citizenship_id_no" id="createEmployeeCitizenshipIDNo"
-                                    class="form-control" required>
+                                    class="form-control" data-type="number" max_length="16" minlength="16" required>
                                 <div id="createEmployeeCitizenshipIDNoErr" class="invalid-feedback">
                                 </div>
                             </div>
@@ -114,8 +114,8 @@
                             Street
                             <span class="text-danger">*</span>
                         </label>
-                        <textarea name="street" id="createEmployeeStreet" class="form-control" cols="10" rows="3"
-                            required></textarea>
+                        <textarea name="street" id="createEmployeeStreet" class="form-control" cols="10"
+                            rows="3"></textarea>
                         <div id="createEmployeeStreetErr" class="invalid-feedback"></div>
                     </div>
                     <div class="row mb-0">
@@ -125,7 +125,7 @@
                                     Province
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="province" id="createEmployeeProvince" class="form-control" required>
+                                <select name="province" id="createEmployeeProvince" class="form-control">
                                     <option value="">Select Province</option>
                                 </select>
                                 <div id="createEmployeeProvinceErr" class="invalid-feedback"></div>
@@ -137,7 +137,7 @@
                                     City
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="city" id="createEmployeeCity" class="form-control" required>
+                                <select name="city" id="createEmployeeCity" class="form-control">
                                     <option value="">Select City</option>
                                 </select>
                                 <div id="createEmployeeCityErr" class="invalid-feedback"></div>
@@ -149,7 +149,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="zip_code" id="createEmployeeZipCode" class="form-control"
-                                    required>
+                                    data-type="number">
                                 <div id="createEmployeeZipCodeErr" class="invalid-feedback">
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                             Position
                             <span class="text-danger">*</span>
                         </label>
-                        <select name="position" id="createEmployeePosition" class="form-control" required>
+                        <select name="position" id="createEmployeePosition" class="form-control">
                             <option value="">Select Position</option>
                             @foreach ($positions as $position)
                                 <option value="{{ $position }}">{{ $position }}</option>
@@ -176,8 +176,7 @@
                                     Bank Account
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="bank_account" id="createEmployeeBankAccount" class="form-control"
-                                    required>
+                                <select name="bank_account" id="createEmployeeBankAccount" class="form-control">
                                     <option value="">Select Bank Account</option>
                                     @foreach ($banks as $bank)
                                         <option value="{{ $bank }}">{{ $bank }}</option>
@@ -193,7 +192,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="account_number" id="createEmployeeBankAccountNo"
-                                    class="form-control" required>
+                                    class="form-control" data-type="number">
                                 <div id="createEmployeeBankAccountNoErr" class="invalid-feedback">
                                 </div>
                             </div>

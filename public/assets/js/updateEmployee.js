@@ -90,67 +90,7 @@ $("#updateEmployeeModal")
         modal.find("#updateEmployeeBankAccount").val("");
         modal.find("#updateEmployeeBankAccountNo").val("");
 
-        modal
-            .find("input[name='firstname']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='lastname']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("select[name='gender']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='date_of_birth']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='email']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='phone']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='citizenship_id_no']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='citizenship_id_file']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("textarea[name='street']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("select[name='province']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("select[name='city']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("input[name='zip_code']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("select[name='position']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-        modal
-            .find("select[name='bank_account']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
-
-        modal
-            .find("input[name='account_number']")
-            .removeClass("is-invalid")
-            .removeClass("is-valid");
+        clearValidationView(modal);
     });
 
 function fetchCityByProvince(province, selectedCity = null) {
@@ -241,12 +181,12 @@ $("#updateEmployeeForm").validate({
             // filesize: 2048,
         },
         zip_code: {
-            required: true,
+            required: false,
             digits: true,
             maxlength: 10,
         },
         account_number: {
-            required: true,
+            required: false,
             digits: true,
             minlength: 5,
             maxlength: 30,
@@ -293,6 +233,8 @@ $("#updateEmployeeForm").validate({
                         toast.onmouseleave = Swal.resumeTimer;
                     },
                 });
+
+                $("#employeesTable").DataTable().ajax.reload();
             },
             error: function (error) {
                 $("#createEmployeeSubmitButton").prop("disabled", false);
@@ -654,27 +596,7 @@ $("#updateEmployeePhoneNo").val(
     phoneNumberValidate($("#updateEmployeePhoneNo").val())
 );
 $("#updateEmployeePhoneNo").mask("800-0000-0000-0000");
-function phoneNumberValidate(phone) {
-    const value = phone.replace("-", "");
-    if (typeof value !== "undefined" && value !== "") {
-        if (value[0] == 0) {
-            return value.slice(1, value.length);
-        } else {
-            return value;
-        }
-    }
-}
-$("#updateEmployeeCitizenshipIDNo").on("input", function () {
-    if (/^[0-9]+$/.test($(this).val())) {
-        $(this).val($(this).val().replace(/,/g, ""));
-    } else {
-        $(this).val(
-            $(this)
-                .val()
-                .substring(0, $(this).val().length - 1)
-        );
-    }
-});
+
 $("#updateEmployeePhoneNo").on("input", function () {
     const value = $(this).val().replace("-", "");
     if (typeof value !== "undefined" && value !== "") {
@@ -726,25 +648,6 @@ function hasAttr(el, attr) {
         return true;
     else return false;
 }
-$.ajax({
-    url: "/get/provinces",
-    method: "GET",
-    success: function (response) {
-        $("#updateEmployeeProvince").empty();
-        $("#updateEmployeeProvince").append(
-            `<option value="">Select Province</option>`
-        );
-        const provinces = response.provinces;
-        provinces.forEach((province) => {
-            $("#updateEmployeeProvince").append(
-                `<option value="${province.id}">${province.name}</option>`
-            );
-        });
-    },
-    error: function (error) {
-        alert("Failed to fetch Indonesia Province API!");
-    },
-});
 
 $("#updateEmployeeProvince").on("change", function () {
     $("#updateEmployeeCity").empty();
@@ -771,28 +674,5 @@ $("#updateEmployeeProvince").on("change", function () {
                 alert("Failed to fetch Indonesia City API!");
             },
         });
-    }
-});
-
-$("#updateEmployeeZipCode").on("input", function () {
-    if (/^[0-9]+$/.test($(this).val())) {
-        $(this).val($(this).val().replace(/,/g, ""));
-    } else {
-        $(this).val(
-            $(this)
-                .val()
-                .substring(0, $(this).val().length - 1)
-        );
-    }
-});
-$("#updateEmployeeBankAccountNo").on("input", function () {
-    if (/^[0-9]+$/.test($(this).val())) {
-        $(this).val($(this).val().replace(/,/g, ""));
-    } else {
-        $(this).val(
-            $(this)
-                .val()
-                .substring(0, $(this).val().length - 1)
-        );
     }
 });

@@ -31,6 +31,8 @@ function showDeleteAlert(url) {
                             text: "Your file has been deleted.",
                             icon: "success",
                         });
+
+                        $("#employeesTable").DataTable().ajax.reload();
                     },
                     error: function (error) {
                         Swal.fire({

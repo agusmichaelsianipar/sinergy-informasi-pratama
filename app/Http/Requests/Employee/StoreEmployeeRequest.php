@@ -32,13 +32,13 @@ class StoreEmployeeRequest extends FormRequest
             'date_of_birth' => 'required|date',
             'gender' => ['required', 'string', Rule::in(['male', 'female'])],
             'phone' => 'required|string|min:10|max:16',
-            'position' => ['required', 'string', Rule::in(Employee::POSITION)],
-            'province' => 'required|numeric',
-            'city' => 'required|numeric',
-            'street' => 'required|string|min:5',
-            'zip_code' => 'required|numeric|min:5',
-            'bank_account' => ['required', 'string', Rule::in(Employee::BANK_ACCOUNT)],
-            'account_number' => 'required|numeric|min_digits:8',
+            'position' => ['nullable', 'string', Rule::in(Employee::POSITION)],
+            'province' => 'nullable|numeric',
+            'city' => 'nullable|numeric',
+            'street' => 'nullable|string|min:5',
+            'zip_code' => 'nullable|numeric|min:5',
+            'bank_account' => ['nullable', 'string', Rule::in(Employee::BANK_ACCOUNT)],
+            'account_number' => 'nullable|numeric|min_digits:8',
         ];
     }
 }

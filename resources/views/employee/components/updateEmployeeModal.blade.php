@@ -91,7 +91,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="citizenship_id_no" id="updateEmployeeCitizenshipIDNo"
-                                    class="form-control" required>
+                                    class="form-control" max_length="16" minlength="16" data-type="number" required>
                                 <div id="updateEmployeeCitizenshipIDNoErr" class="invalid-feedback">
                                 </div>
                             </div>
@@ -116,8 +116,8 @@
                             Street
                             <span class="text-danger">*</span>
                         </label>
-                        <textarea name="street" id="updateEmployeeStreet" class="form-control" cols="10" rows="3"
-                            required></textarea>
+                        <textarea name="street" id="updateEmployeeStreet" class="form-control" cols="10"
+                            rows="3"></textarea>
                         <div id="updateEmployeeStreetErr" class="invalid-feedback"></div>
                     </div>
                     <div class="row mb-0">
@@ -127,7 +127,7 @@
                                     Province
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="province" id="updateEmployeeProvince" class="form-control" required>
+                                <select name="province" id="updateEmployeeProvince" class="form-control">
                                     <option value="">Select Province</option>
                                 </select>
                                 <div id="updateEmployeeProvinceErr" class="invalid-feedback"></div>
@@ -139,7 +139,7 @@
                                     City
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="city" id="updateEmployeeCity" class="form-control" required>
+                                <select name="city" id="updateEmployeeCity" class="form-control">
                                     <option value="">Select City</option>
                                 </select>
                                 <div id="updateEmployeeCityErr" class="invalid-feedback"></div>
@@ -151,7 +151,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="zip_code" id="updateEmployeeZipCode" class="form-control"
-                                    required>
+                                    data-type="number">
                                 <div id="updateEmployeeZipCodeErr" class="invalid-feedback">
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                             Position
                             <span class="text-danger">*</span>
                         </label>
-                        <select name="position" id="updateEmployeePosition" class="form-control" required>
+                        <select name="position" id="updateEmployeePosition" class="form-control">
                             <option value="">Select Position</option>
                             @foreach ($positions as $position)
                                 <option value="{{ $position }}">{{ $position }}</option>
@@ -178,8 +178,7 @@
                                     Bank Account
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="bank_account" id="updateEmployeeBankAccount" class="form-control"
-                                    required>
+                                <select name="bank_account" id="updateEmployeeBankAccount" class="form-control">
                                     <option value="">Select Bank Account</option>
                                     @foreach ($banks as $bank)
                                         <option value="{{ $bank }}">{{ $bank }}</option>
@@ -195,7 +194,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="account_number" id="updateEmployeeBankAccountNo"
-                                    class="form-control" required>
+                                    class="form-control" data-type="number">
                                 <div id="updateEmployeeBankAccountNoErr" class="invalid-feedback">
                                 </div>
                             </div>
