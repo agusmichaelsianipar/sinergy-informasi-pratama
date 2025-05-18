@@ -7,6 +7,14 @@ use App\Models\Employee;
 
 class EmployeeRepository implements EmployeeRepositoryInterface
 {
+    public function query(){
+
+        return Employee::query();
+    }
+    public function filterByProperty($employees, $property, $value){
+
+        return $employees->where($property, $value);
+    }
     public function getEmployeeByEmployeeID($employeeIDNo){
 
         return Employee::where("employee_id_number", $employeeIDNo)->firstOrFail();

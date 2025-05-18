@@ -21,6 +21,17 @@ class EmployeeService extends Emsifa
         $this->employeeRepos = $employeeRepos;
     }
 
+    public function fetchAllEmployee($request){
+
+        $employees = $this->employeeRepos->query();
+
+        if(isset($request->position)){
+
+            $employees = $this->employeeRepos->filterByProperty($employees, "position", $request->position);
+        }
+        return $employees->get();
+
+    }
     public function storeEmployee($request){
 
 

@@ -9,12 +9,12 @@
             </div>
             <div class="card-body">
                 {{-- Add Employee Button --}}
-                <button type="button" class="btn btn-sm btn-outline-primary mb-2" data-bs-toggle="modal"
+                <button type="button" class="btn btn-sm btn-outline-success mb-2" data-bs-toggle="modal"
                     data-bs-target="#createEmployeeModal">
                     <i class="fa-solid fa-plus"></i>
                     Add Employee
                 </button>
-
+                @include('employee.components.filter')
                 {{-- Employee Table --}}
                 @include('employee.components.table')
             </div>

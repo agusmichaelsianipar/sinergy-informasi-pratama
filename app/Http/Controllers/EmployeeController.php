@@ -23,10 +23,20 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $employees = Employee::all();
-        $positions = Employee::POSITION;
-        $banks = Employee::BANK_ACCOUNT;
-        return view('employee.index', compact('employees', 'positions', 'banks'));
+        
+        // try{
+            
+            $employees = $this->employeeService->fetchAllEmployee($request);
+
+            $positions = Employee::POSITION;
+
+            $banks = Employee::BANK_ACCOUNT;
+
+            return view('employee.index', compact('employees', 'positions', 'banks'));
+        // }catch(\Throwable $th){
+            
+        //     return redirect('/')->with('error', $th->getMessage());
+        // }
     }
 
     /**
