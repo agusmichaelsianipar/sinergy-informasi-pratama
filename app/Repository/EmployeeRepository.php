@@ -9,7 +9,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 {
     public function query(){
 
-        return Employee::query();
+        return Employee::with('user');
     }
     public function filterByProperty($employees, $property, $value){
 

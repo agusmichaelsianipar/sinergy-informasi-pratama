@@ -25,14 +25,16 @@ class EmployeeController extends Controller
     {
         
         // try{
-            
-            $employees = $this->employeeService->fetchAllEmployee($request);
+            if($request->ajax()){
+                
+                return $this->employeeService->fetchAllEmployee($request);
+            }
 
             $positions = Employee::POSITION;
 
             $banks = Employee::BANK_ACCOUNT;
 
-            return view('employee.index', compact('employees', 'positions', 'banks'));
+            return view('employee.index', compact( 'positions', 'banks'));
         // }catch(\Throwable $th){
             
         //     return redirect('/')->with('error', $th->getMessage());
