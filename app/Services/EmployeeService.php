@@ -73,15 +73,14 @@ class EmployeeService extends Emsifa
         $city = $this->getCityByCityID($request->city);
 
         $employee = $this->employeeRepos->getEmployeeByEmployeeID($employeeIDNo);
+        // dd(json_decode(json_encode($employeeIDNo)));
         
         $user = $this->userRepos->getUserByUserID($employee->user_id);
 
-        $genderVal = $request->gender == "male" ? '1' : '2';
-        $employe_id_number = Carbon::parse($request->date_of_birth)->format("Ymd").Carbon::now()->isoFormat("Ym").$genderVal.str_pad(Employee::next(), 5, "0", STR_PAD_LEFT);
         $identityFilename = $employee->citizenship_id_file;
         if ($request->file('citizenship_id_file')) {
 
-            $filename = $employe_id_number."-Citizenship_Identity_File-".Carbon::now()->timestamp.'.'.$request->file('citizenship_id_file')->extension();
+            $filename = $employee->employee_id_number."-Citizenship_Identity_File-".Carbon::now()->timestamp.'.'.$request->file('citizenship_id_file')->extension();
 
             $identityFilename = $request->file('citizenship_id_file')->storeAs("Citizenship_Identity_File", $filename, 'public');
         }
@@ -93,7 +92,6 @@ class EmployeeService extends Emsifa
         ]);
 
         $this->employeeRepos->update($employee, [
-            'employee_id_number' => $employe_id_number,
             'citizenship_id_no' => $request->citizenship_id_no,
             'citizenship_id_file' => $identityFilename,
             'date_of_birth' => $request->date_of_birth,
@@ -110,5 +108,16 @@ class EmployeeService extends Emsifa
             'account_number' => $request->account_number,
         ]);
 
+    }
+    public function destroyEmployee($employeeIDNo){
+
+        $employee = $this->employeeRepos->getEmployeeByEmployeeID($employeeIDNo);
+        
+        $user = $this->userRepos->getUserByUserID($employee->user->id);
+        $this->userRepos->update($user, [
+            'user_status' => false,
+        ]);
+        
+        $this->employeeRepos->delete($employee);
     }
 }

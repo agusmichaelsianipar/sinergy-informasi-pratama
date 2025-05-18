@@ -19,4 +19,8 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 
         return tap($employee)->update($data);
     }
+    public function delete($employee){
+
+        return $employee->delete();
+    }
 }

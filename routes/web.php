@@ -12,4 +12,5 @@ Route::get('/get/provinces', [FetchIndonesiaRegionAPIController::class, 'getProv
 Route::get('/get/province/{provinceID}', [FetchIndonesiaRegionAPIController::class, 'getProvinceByID']);
 Route::get('/get/cities/{provinceID}', [FetchIndonesiaRegionAPIController::class, 'getCitiesByProvinceID']);
 Route::get('/get/city/{cityID}', [FetchIndonesiaRegionAPIController::class, 'getCityByCityID']);
+Route::post('/post/employees/{employeesEIN}', [EmployeeController::class, 'update']);
 Route::resource('employees', EmployeeController::class);

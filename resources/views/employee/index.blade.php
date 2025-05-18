@@ -23,12 +23,14 @@
 
     @include('employee.components.showImageModal')
     @include('employee.components.createEmployeeModal')
+    @include('employee.components.updateEmployeeModal')
 @endsection
 
 
 @push('addon-script')
     <script type="text/javascript" src="{{ asset('assets/js/showEmployee.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/createEmployee.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/updateEmployee.js') }}"></script>
     <script>
         $.ajaxSetup({
             headers: {

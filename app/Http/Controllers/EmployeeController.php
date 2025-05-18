@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\EmployeeService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Employee\StoreEmployeeRequest;
+use App\Http\Requests\Employee\UpdateEmployeeRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EmployeeController extends Controller
@@ -84,7 +85,7 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $employeeIDNo)
+    public function update(UpdateEmployeeRequest $request, string $employeeIDNo)
     {
         try{
             DB::transaction(function() use($request, $employeeIDNo){
@@ -114,8 +115,30 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $employeeIDNo)
     {
-        //
+        try{
+            DB::transaction(function() use($employeeIDNo){
+                
+                $this->employeeService->destroyEmployee($employeeIDNo);
+            });
+
+            return response()->json([
+                "status" => true,
+                "message" => "Employee data successfully deleted."
+            ], 200);
+        } catch (ModelNotFoundException $ex) {
+            
+            return response()->json([
+                'status' => false,
+                'error' => $ex->getModel()." not found!"
+            ], 404);
+        }catch(\Throwable $th){
+            
+            return response()->json([
+                'status' => false,
+                'error' => $th->getMessage()
+            ], 500);
+        }
     }
 }
