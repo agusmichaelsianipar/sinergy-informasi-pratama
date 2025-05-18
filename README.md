@@ -7,55 +7,47 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## How to install the app
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Make sure you've download [Composer](https://getcomposer.org/download/), and meet all the minimum requirements of Laravel 12.
+-   Use the git clone a command followed by the repository [URL](https://github.com/agusmichaelsianipar/sinergy-informasi-pratama.git) to clone the project to your local machine.
+    `git clone https://github.com/agusmichaelsianipar/sinergy-informasi-pratama.git`
+-   Navigate to the project Directory.
+    `cd sinergy-informasi-pratama`
+-   Install all the dependencies
+    `composer install`
+-   Install all the dependencies
+    `npm install`
+-   Duplicate the .env.example file and save it as .env
+    `cp .env.example .env`
+-   Generate the application key using the following command:
+    `php artisan key:generate`
+-   Create an empty database for the application
+-   In the .env file, add database information to allow Laravel to connect to the database
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=sinergy_informasi_pratama
+    DB_USERNAME=root
+    DB_PASSWORD=
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   Execute the following command to run the database migrations:
+    `php artisan migrate`
+-   Execute the following command to link the storage with public folder:
+    `php artisan storage:link`
+-   Serve the application by the following command:
+    `php artisan serve`
 
-## Learning Laravel
+### Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   **[PHP 8.4.5](https://www.php.net/releases/8.4/en.php)**
+-   **[Laravel 12](https://laravel.com/docs/12.x/releases)**
+-   **[MySQL 8.0.30](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/)**
+-   **[Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)**
+-   **[Yajra Laravel Datatable 12](https://yajrabox.com/docs/laravel-datatables/12.0/)**
+-   **[Font Awesome 6.7.2](https://docs.fontawesome.com/)**
+-   **[SweetAlert 2](https://sweetalert2.github.io/)**
+-   **[JQuery 3.7.1](https://releases.jquery.com/)**
